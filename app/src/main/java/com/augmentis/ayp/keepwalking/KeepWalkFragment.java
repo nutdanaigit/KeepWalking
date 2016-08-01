@@ -99,4 +99,6 @@ public class KeepWalkFragment extends Fragment {
             ((KeepWalkPagerActivity) getActivity()).addPageUpdate(position);
         }
     }
+
+
 }

@@ -45,11 +45,15 @@ public class KeepWalkListFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                KeepWalkLab keep = KeepWalkLab.getInstance(getActivity());
-                keep.addKeep("");
+//                KeepWalkLab keep = KeepWalkLab.getInstance(getActivity());
+//                keep.addKeep("");
 //                Log.d(TAG," Test  "+keep.getKeepList().size());
-                Intent addBtn =KeepWalkPagerActivity.newIntent(getActivity(),keep.getKeepList().get(keep.getKeepList().size()-1).getId(),keep.getKeepList().size()-1);
-                startActivity(addBtn);
+//                Intent addBtn =KeepWalkPagerActivity.newIntent(getActivity(),keep.getKeepList().get(keep.getKeepList().size()-1).getId(),keep.getKeepList().size()-1);
+//                startActivity(addBtn);
+                FragmentManager fm = getFragmentManager();
+                KeepWalkDialog dialogFragment = KeepWalkDialog.newInstance();
+//                dialogFragment.setTargetFragment(KeepWalkListFragment.this, 80);
+                dialogFragment.show(fm , "Hello");
             }
 
             private FragmentManager getSupportFragmentManager() {
