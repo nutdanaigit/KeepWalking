@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.augmentis.ayp.keepwalking.model.KeepWalk;
+import com.augmentis.ayp.keepwalking.model.KeepWalkLab;
+
 import java.util.List;
 
 /**
@@ -52,7 +55,8 @@ public class KeepWalkListFragment extends Fragment {
 //                startActivity(addBtn);
                 FragmentManager fm = getFragmentManager();
                 KeepWalkDialog dialogFragment = KeepWalkDialog.newInstance();
-//                dialogFragment.setTargetFragment(KeepWalkListFragment.this, 80);
+
+                dialogFragment.setTargetFragment(KeepWalkListFragment.this,80);
                 dialogFragment.show(fm , "Hello");
             }
 
@@ -77,21 +81,12 @@ public class KeepWalkListFragment extends Fragment {
      */
     private void updateUI(){
         KeepWalkLab keepLab = KeepWalkLab.getInstance(getActivity());//Call Instance and get object
-        List<KeepWalk> keepp = keepLab.getKeepList();
+        List<KeepWalk> keepp = keepLab.getKeep();
         if(_adapter==null){
             _adapter = new KeepAdapter(keepp); //Create object by call CrimeAdapter
             _keepRecyclerView.setAdapter(_adapter); //set adapter but I don't know when crimeRecyclerView work.
         }else{
-//            _adapter.notifyDataSetChanged();
-            if(keepPos != null){
-                for(Integer pos : keepPos){
-                    _adapter.notifyItemChanged(pos);
-                    Log.d(TAG, "notify change at " + pos);
-                }
-
-            }
-
-
+            _adapter.notifyDataSetChanged();
         }
     }
 
@@ -118,6 +113,13 @@ public class KeepWalkListFragment extends Fragment {
             //Blah blah
             Log.d(TAG,"Return form CrimeFragment ");
         }
+        if(requestCode == 80){
+            if(resultCode == Activity.RESULT_OK){
+                Log.d("pearl","" + requestCode +"   "+resultCode);
+                updateUI();
+            }
+        }
+
     }
 
 
@@ -160,7 +162,7 @@ public class KeepWalkListFragment extends Fragment {
             startActivityForResult(intent, REQUEST_UPDATED_KEEPWALK);//Call Method of Fragment class
         }
     }
-    private class KeepAdapter extends RecyclerView.Adapter<CrimeHolder>{
+    protected class KeepAdapter extends RecyclerView.Adapter<CrimeHolder>{
         private List<KeepWalk> _keepp;
         private int viewCreatingCount;
         public  KeepAdapter(List<KeepWalk> keep){this._keepp = keep;} //ArrayList

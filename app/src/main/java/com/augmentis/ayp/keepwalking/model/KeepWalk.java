@@ -1,4 +1,4 @@
-package com.augmentis.ayp.keepwalking;
+package com.augmentis.ayp.keepwalking.model;
 
 import java.util.Date;
 import java.util.UUID;
@@ -13,8 +13,10 @@ public class KeepWalk {
 
 
 
-    public KeepWalk(){
-        id = UUID.randomUUID();
+    public KeepWalk(){UUID.randomUUID();}
+
+    public KeepWalk(UUID uuid){
+        this.id=uuid;
         keepDate = new Date();
     }
 

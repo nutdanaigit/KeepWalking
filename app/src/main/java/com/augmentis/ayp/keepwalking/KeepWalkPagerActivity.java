@@ -13,6 +13,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.augmentis.ayp.keepwalking.model.KeepWalk;
+import com.augmentis.ayp.keepwalking.model.KeepWalkLab;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -44,7 +47,7 @@ public class KeepWalkPagerActivity extends FragmentActivity {
         Log.d("pearl","testtttt2123");
         _viewPager = (ViewPager) findViewById(R.id.activity_keepwalk_pager_view_pager);
 
-        _keepp = KeepWalkLab.getInstance(this).getKeepList();
+        _keepp = KeepWalkLab.getInstance(this).getKeep();
 
 
         FragmentManager fm = getSupportFragmentManager();
@@ -66,7 +69,7 @@ public class KeepWalkPagerActivity extends FragmentActivity {
             }
         });
         //set position
-        int position = KeepWalkLab.getInstance(this).getCrimePositionById(_keepId);
+        int position = KeepWalkLab.getInstance(this).getKeepPositionById(_keepId);
         _viewPager.setCurrentItem(position);
 
 

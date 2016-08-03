@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+
+import com.augmentis.ayp.keepwalking.model.KeepWalk;
+import com.augmentis.ayp.keepwalking.model.KeepWalkLab;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,6 +61,7 @@ public class KeepWalkFragment extends Fragment {
         editText = (EditText) v. findViewById(R.id.keepwalk_title);
         editText.setText(keep.getTitle());
         saveBtn = (Button) v.findViewById(R.id.save_btn);
+//        saveBtn.setVisibility(View.GONE);
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
